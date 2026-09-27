@@ -1,0 +1,565 @@
+{
+  "builtAt": "2026-09-27T12:29:41.780Z",
+  "symbols": [
+    {
+      "name": "Recipes",
+      "kind": "component",
+      "file": "proj/frontend/src/app/recipes/recipes.ts",
+      "line": 15,
+      "preview": "export class Recipes implements OnInit, OnDestroy {"
+    },
+    {
+      "name": "onSearchInput",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipes/recipes.ts",
+      "line": 26,
+      "preview": "onSearchInput(v: string) {"
+    },
+    {
+      "name": "clearSearch",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipes/recipes.ts",
+      "line": 32,
+      "preview": "clearSearch() {"
+    },
+    {
+      "name": "ngOnInit",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipes/recipes.ts",
+      "line": 43,
+      "preview": "ngOnInit() {"
+    },
+    {
+      "name": "ngOnDestroy",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipes/recipes.ts",
+      "line": 47,
+      "preview": "ngOnDestroy() {"
+    },
+    {
+      "name": "Ingredient",
+      "kind": "interface",
+      "file": "proj/frontend/src/app/recipe.ts",
+      "line": 1,
+      "preview": "export interface Ingredient {"
+    },
+    {
+      "name": "Step",
+      "kind": "interface",
+      "file": "proj/frontend/src/app/recipe.ts",
+      "line": 8,
+      "preview": "export interface Step {"
+    },
+    {
+      "name": "Recipe",
+      "kind": "interface",
+      "file": "proj/frontend/src/app/recipe.ts",
+      "line": 13,
+      "preview": "export interface Recipe {"
+    },
+    {
+      "name": "ExtractResult",
+      "kind": "interface",
+      "file": "proj/frontend/src/app/recipe.ts",
+      "line": 29,
+      "preview": "export interface ExtractResult {"
+    },
+    {
+      "name": "RecipeForm",
+      "kind": "component",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 15,
+      "preview": "export class RecipeForm implements OnInit {"
+    },
+    {
+      "name": "editing",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 20,
+      "preview": "editing = signal(false);"
+    },
+    {
+      "name": "editingId",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 21,
+      "preview": "editingId = signal<number | null>(null);"
+    },
+    {
+      "name": "saving",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 22,
+      "preview": "saving = signal(false);"
+    },
+    {
+      "name": "error",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 23,
+      "preview": "error = signal<string | null>(null);"
+    },
+    {
+      "name": "touchedTitle",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 24,
+      "preview": "touchedTitle = signal(false);"
+    },
+    {
+      "name": "confirmCancel",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 25,
+      "preview": "confirmCancel = signal(false);"
+    },
+    {
+      "name": "form",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 29,
+      "preview": "form = signal<Recipe>({"
+    },
+    {
+      "name": "ngOnInit",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 44,
+      "preview": "ngOnInit() {"
+    },
+    {
+      "name": "if",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 46,
+      "preview": "if (idParam) {"
+    },
+    {
+      "name": "addIngredient",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 62,
+      "preview": "addIngredient() {"
+    },
+    {
+      "name": "removeIngredient",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 69,
+      "preview": "removeIngredient(i: number) {"
+    },
+    {
+      "name": "addStep",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 73,
+      "preview": "addStep() {"
+    },
+    {
+      "name": "removeStep",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 77,
+      "preview": "removeStep(i: number) {"
+    },
+    {
+      "name": "onCancelClick",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 81,
+      "preview": "onCancelClick() {"
+    },
+    {
+      "name": "cancel",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 85,
+      "preview": "cancel() {"
+    },
+    {
+      "name": "save",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipe-form/recipe-form.ts",
+      "line": 90,
+      "preview": "save() {"
+    },
+    {
+      "name": "RecipeDetail",
+      "kind": "component",
+      "file": "proj/frontend/src/app/recipe-detail/recipe-detail.ts",
+      "line": 15,
+      "preview": "export class RecipeDetail implements OnInit {"
+    },
+    {
+      "name": "recipe",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/recipe-detail/recipe-detail.ts",
+      "line": 20,
+      "preview": "recipe = signal<Recipe | null>(null);"
+    },
+    {
+      "name": "error",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/recipe-detail/recipe-detail.ts",
+      "line": 21,
+      "preview": "error = signal<string | null>(null);"
+    },
+    {
+      "name": "servings",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/recipe-detail/recipe-detail.ts",
+      "line": 22,
+      "preview": "servings = signal(4);"
+    },
+    {
+      "name": "savedPhoto",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/recipe-detail/recipe-detail.ts",
+      "line": 23,
+      "preview": "savedPhoto = signal(false);"
+    },
+    {
+      "name": "confirmDelete",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/recipe-detail/recipe-detail.ts",
+      "line": 24,
+      "preview": "confirmDelete = signal(false);"
+    },
+    {
+      "name": "scale",
+      "kind": "computed",
+      "file": "proj/frontend/src/app/recipe-detail/recipe-detail.ts",
+      "line": 26,
+      "preview": "scale = computed(() => {"
+    },
+    {
+      "name": "amountText",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipe-detail/recipe-detail.ts",
+      "line": 31,
+      "preview": "amountText(r: Recipe, i: { name: string; amount: number | null; unit: string | null }) {"
+    },
+    {
+      "name": "decServings",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipe-detail/recipe-detail.ts",
+      "line": 38,
+      "preview": "decServings() { this.servings.set(Math.max(1, this.servings() - 1)); }"
+    },
+    {
+      "name": "ngOnInit",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipe-detail/recipe-detail.ts",
+      "line": 40,
+      "preview": "ngOnInit() {"
+    },
+    {
+      "name": "onPhotoChange",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipe-detail/recipe-detail.ts",
+      "line": 51,
+      "preview": "onPhotoChange(ev: Event) {"
+    },
+    {
+      "name": "delete",
+      "kind": "method",
+      "file": "proj/frontend/src/app/recipe-detail/recipe-detail.ts",
+      "line": 65,
+      "preview": "delete() {"
+    },
+    {
+      "name": "Import",
+      "kind": "component",
+      "file": "proj/frontend/src/app/import/import.ts",
+      "line": 15,
+      "preview": "export class Import {"
+    },
+    {
+      "name": "mode",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/import/import.ts",
+      "line": 19,
+      "preview": "mode = signal<'url' | 'text'>('url');"
+    },
+    {
+      "name": "url",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/import/import.ts",
+      "line": 20,
+      "preview": "url = signal('');"
+    },
+    {
+      "name": "text",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/import/import.ts",
+      "line": 21,
+      "preview": "text = signal('');"
+    },
+    {
+      "name": "loading",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/import/import.ts",
+      "line": 22,
+      "preview": "loading = signal(false);"
+    },
+    {
+      "name": "error",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/import/import.ts",
+      "line": 23,
+      "preview": "error = signal<string | null>(null);"
+    },
+    {
+      "name": "result",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/import/import.ts",
+      "line": 24,
+      "preview": "result = signal<ExtractResult | null>(null);"
+    },
+    {
+      "name": "extract",
+      "kind": "method",
+      "file": "proj/frontend/src/app/import/import.ts",
+      "line": 27,
+      "preview": "extract() {"
+    },
+    {
+      "name": "if",
+      "kind": "method",
+      "file": "proj/frontend/src/app/import/import.ts",
+      "line": 31,
+      "preview": "if (!payload.url && !payload.text) {"
+    },
+    {
+      "name": "save",
+      "kind": "method",
+      "file": "proj/frontend/src/app/import/import.ts",
+      "line": 51,
+      "preview": "save() {"
+    },
+    {
+      "name": "App",
+      "kind": "component",
+      "file": "proj/frontend/src/app/app.ts",
+      "line": 11,
+      "preview": "export class App {"
+    },
+    {
+      "name": "ApiService",
+      "kind": "service",
+      "file": "proj/frontend/src/app/api.ts",
+      "line": 8,
+      "preview": "export class ApiService {"
+    },
+    {
+      "name": "setSearch",
+      "kind": "method",
+      "file": "proj/frontend/src/app/api.ts",
+      "line": 16,
+      "preview": "setSearch(v: string) {"
+    },
+    {
+      "name": "recipes",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/api.ts",
+      "line": 20,
+      "preview": "readonly recipes = signal<Recipe[]>([]);"
+    },
+    {
+      "name": "loading",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/api.ts",
+      "line": 21,
+      "preview": "readonly loading = signal(false);"
+    },
+    {
+      "name": "error",
+      "kind": "signal",
+      "file": "proj/frontend/src/app/api.ts",
+      "line": 22,
+      "preview": "readonly error = signal<string | null>(null);"
+    },
+    {
+      "name": "loadRecipes",
+      "kind": "method",
+      "file": "proj/frontend/src/app/api.ts",
+      "line": 28,
+      "preview": "loadRecipes() {"
+    },
+    {
+      "name": "getRecipe",
+      "kind": "method",
+      "file": "proj/frontend/src/app/api.ts",
+      "line": 42,
+      "preview": "getRecipe(id: number) {"
+    },
+    {
+      "name": "createRecipe",
+      "kind": "method",
+      "file": "proj/frontend/src/app/api.ts",
+      "line": 46,
+      "preview": "createRecipe(r: Recipe) {"
+    },
+    {
+      "name": "updateRecipe",
+      "kind": "method",
+      "file": "proj/frontend/src/app/api.ts",
+      "line": 50,
+      "preview": "updateRecipe(id: number, r: Recipe) {"
+    },
+    {
+      "name": "deleteRecipe",
+      "kind": "method",
+      "file": "proj/frontend/src/app/api.ts",
+      "line": 54,
+      "preview": "deleteRecipe(id: number) {"
+    },
+    {
+      "name": "uploadPhoto",
+      "kind": "method",
+      "file": "proj/frontend/src/app/api.ts",
+      "line": 58,
+      "preview": "uploadPhoto(id: number, file: File) {"
+    },
+    {
+      "name": "extract",
+      "kind": "method",
+      "file": "proj/frontend/src/app/api.ts",
+      "line": 64,
+      "preview": "extract(payload: { url?: string; text?: string }) {"
+    },
+    {
+      "name": "imageUrl",
+      "kind": "method",
+      "file": "proj/frontend/src/app/api.ts",
+      "line": 68,
+      "preview": "imageUrl(path: string | null): string {"
+    },
+    {
+      "name": "AiOptions",
+      "kind": "class",
+      "file": "proj/backend/Services/RecipeExtractor.cs",
+      "line": 8,
+      "preview": "public class AiOptions"
+    },
+    {
+      "name": "RecipeExtractor",
+      "kind": "class",
+      "file": "proj/backend/Services/RecipeExtractor.cs",
+      "line": 19,
+      "preview": "public class RecipeExtractor"
+    },
+    {
+      "name": "ExtractAsync",
+      "kind": "method",
+      "file": "proj/backend/Services/RecipeExtractor.cs",
+      "line": 44,
+      "preview": "public async Task<ExtractResult> ExtractAsync(ExtractRequest request, CancellationToken ct)"
+    },
+    {
+      "name": "RecipesController",
+      "kind": "class",
+      "file": "proj/backend/Controllers/RecipesController.cs",
+      "line": 11,
+      "preview": "public class RecipesController : ControllerBase"
+    },
+    {
+      "name": "Delete",
+      "kind": "method",
+      "file": "proj/backend/Controllers/RecipesController.cs",
+      "line": 134,
+      "preview": "public async Task<IActionResult> Delete(int id)"
+    },
+    {
+      "name": "Photo",
+      "kind": "method",
+      "file": "proj/backend/Controllers/RecipesController.cs",
+      "line": 150,
+      "preview": "public async Task<IActionResult> Photo(int id, IFormFile file)"
+    },
+    {
+      "name": "ExtractController",
+      "kind": "class",
+      "file": "proj/backend/Controllers/ExtractController.cs",
+      "line": 9,
+      "preview": "public class ExtractController : ControllerBase"
+    },
+    {
+      "name": "Post",
+      "kind": "endpoint",
+      "file": "proj/backend/Controllers/ExtractController.cs",
+      "line": 18,
+      "preview": "[HttpPost]"
+    },
+    {
+      "name": "IngredientDto",
+      "kind": "class",
+      "file": "proj/backend/Dtos/RecipeDtos.cs",
+      "line": 3,
+      "preview": "public class IngredientDto"
+    },
+    {
+      "name": "StepDto",
+      "kind": "class",
+      "file": "proj/backend/Dtos/RecipeDtos.cs",
+      "line": 10,
+      "preview": "public class StepDto"
+    },
+    {
+      "name": "RecipeDto",
+      "kind": "class",
+      "file": "proj/backend/Dtos/RecipeDtos.cs",
+      "line": 15,
+      "preview": "public class RecipeDto"
+    },
+    {
+      "name": "RecipeDetailDto",
+      "kind": "class",
+      "file": "proj/backend/Dtos/RecipeDtos.cs",
+      "line": 30,
+      "preview": "public class RecipeDetailDto"
+    },
+    {
+      "name": "ExtractRequest",
+      "kind": "class",
+      "file": "proj/backend/Dtos/RecipeDtos.cs",
+      "line": 48,
+      "preview": "public class ExtractRequest"
+    },
+    {
+      "name": "ExtractResult",
+      "kind": "class",
+      "file": "proj/backend/Dtos/RecipeDtos.cs",
+      "line": 54,
+      "preview": "public class ExtractResult"
+    },
+    {
+      "name": "Recipe",
+      "kind": "class",
+      "file": "proj/backend/Data/RecipeDbContext.cs",
+      "line": 6,
+      "preview": "public class Recipe"
+    },
+    {
+      "name": "Ingredient",
+      "kind": "class",
+      "file": "proj/backend/Data/RecipeDbContext.cs",
+      "line": 25,
+      "preview": "public class Ingredient"
+    },
+    {
+      "name": "Step",
+      "kind": "class",
+      "file": "proj/backend/Data/RecipeDbContext.cs",
+      "line": 36,
+      "preview": "public class Step"
+    },
+    {
+      "name": "RecipeDbContext",
+      "kind": "class",
+      "file": "proj/backend/Data/RecipeDbContext.cs",
+      "line": 45,
+      "preview": "public class RecipeDbContext : DbContext"
+    }
+  ]
+}

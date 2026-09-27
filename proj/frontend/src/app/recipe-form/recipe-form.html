@@ -1,0 +1,89 @@
+<div class="d-flex align-items-center gap-3 mb-4">
+  <a href="javascript:void(0)" class="back-link text-decoration-none fw-semibold" (click)="onCancelClick()">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6 6m-6-6 6-6"/></svg>
+    Annulla
+  </a>
+  <h1 class="fs-4 fw-bold mb-0">{{ editing() ? 'Modifica ricetta' : 'Nuova ricetta' }}</h1>
+</div>
+
+<div class="alert alert-danger py-2 px-3 small mb-3" *ngIf="error()">{{ error() }}</div>
+
+<div class="mb-3">
+  <label class="form-label small fw-semibold text-muted">Titolo *</label>
+  <input class="form-control rounded-3" [class.is-invalid]="titleInvalid()" [ngModel]="form().title"
+         (ngModelChange)="form().title = $event" (blur)="touchedTitle.set(true)" placeholder="Es. Pasta al pomodoro" />
+  <div class="invalid-feedback">Il titolo è obbligatorio</div>
+</div>
+
+<div class="mb-3">
+  <label class="form-label small fw-semibold text-muted">Descrizione</label>
+  <textarea class="form-control rounded-3" rows="3" [ngModel]="form().description ?? ''" (ngModelChange)="form().description = $event"></textarea>
+</div>
+
+<div class="row g-2 mb-3">
+  <div class="col">
+    <label class="form-label small fw-semibold text-muted">Porzioni base</label>
+    <input class="form-control rounded-3" type="number" min="1" [ngModel]="form().baseServings" (ngModelChange)="form().baseServings = $event" />
+  </div>
+  <div class="col">
+    <label class="form-label small fw-semibold text-muted">Prep (min)</label>
+    <input class="form-control rounded-3" type="number" min="0" [ngModel]="form().prepMinutes ?? 0" (ngModelChange)="form().prepMinutes = $event" />
+  </div>
+  <div class="col">
+    <label class="form-label small fw-semibold text-muted">Cottura (min)</label>
+    <input class="form-control rounded-3" type="number" min="0" [ngModel]="form().cookMinutes ?? 0" (ngModelChange)="form().cookMinutes = $event" />
+  </div>
+</div>
+
+<div class="row g-2 mb-3">
+  <div class="col">
+    <label class="form-label small fw-semibold text-muted">Categoria</label>
+    <input class="form-control rounded-3" [ngModel]="form().category ?? ''" (ngModelChange)="form().category = $event" placeholder="Primo, dolce..." />
+  </div>
+  <div class="col">
+    <label class="form-label small fw-semibold text-muted">Metodo</label>
+    <input class="form-control rounded-3" [ngModel]="form().method ?? ''" (ngModelChange)="form().method = $event" placeholder="Forno, padella..." />
+  </div>
+</div>
+
+<div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+  <h2 class="fs-6 fw-bold mb-0">Ingredienti</h2>
+  <button class="btn btn-sm btn-outline-secondary" (click)="addIngredient()">+ Aggiungi</button>
+</div>
+
+<div *ngIf="form().ingredients.length === 0" class="empty-hint">Nessun ingrediente: tocca "+ Aggiungi" per iniziare.</div>
+<div *ngFor="let ing of form().ingredients; let i = index" class="d-flex gap-2 mb-2 align-items-center">
+  <input class="form-control form-control-sm rounded-3" style="max-width:80px;flex:0 0 80px;" placeholder="Quantità" type="number" step="0.1" min="0"
+         [ngModel]="ing.amount ?? 0" (ngModelChange)="ing.amount = $event" />
+  <input class="form-control form-control-sm rounded-3" style="max-width:100px;flex:0 0 100px;" placeholder="Unità" [ngModel]="ing.unit ?? ''" (ngModelChange)="ing.unit = $event" />
+  <input class="form-control form-control-sm rounded-3 flex-grow-1" placeholder="Ingrediente" [ngModel]="ing.name" (ngModelChange)="ing.name = $event" />
+  <button class="btn btn-sm btn-outline-danger" (click)="removeIngredient(i)" aria-label="Rimuovi ingrediente">x</button>
+</div>
+
+<div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+  <h2 class="fs-6 fw-bold mb-0">Procedimento</h2>
+  <button class="btn btn-sm btn-outline-secondary" (click)="addStep()">+ Aggiungi</button>
+</div>
+
+<div *ngIf="form().steps.length === 0" class="empty-hint">Nessun passo: tocca "+ Aggiungi" per iniziare.</div>
+<div *ngFor="let s of form().steps; let i = index; let idx = index" class="d-flex gap-2 mb-2 align-items-start">
+  <span class="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center text-white fw-bold small" style="width:26px;height:26px;background:#c0562b;">{{ idx + 1 }}</span>
+  <textarea class="form-control form-control-sm flex-grow-1" rows="2" [ngModel]="s.text" (ngModelChange)="s.text = $event" placeholder="Passo {{ idx + 1 }}"></textarea>
+  <button class="btn btn-sm btn-outline-danger flex-shrink-0" (click)="removeStep(i)">x</button>
+</div>
+
+<button class="btn w-100 py-3 fw-semibold fs-6 mt-4" [disabled]="saving()" (click)="save()" style="background:#c0562b;">
+  <span class="spinner spinner-sm" *ngIf="saving()"></span>
+  {{ saving() ? 'Salvataggio...' : 'Salva ricetta' }}
+</button>
+
+<div class="confirm-overlay" *ngIf="confirmCancel()">
+  <div class="confirm-dialog card p-4">
+    <div class="fw-bold mb-2">Annullare la modifica?</div>
+    <p class="small text-muted mb-4">Le modifiche non salvate andranno perse.</p>
+    <div class="d-flex gap-2 justify-content-end">
+      <button class="btn btn-sm ghost" (click)="confirmCancel.set(false)">Continua a modificare</button>
+      <button class="btn btn-sm danger" (click)="cancel()">Annulla</button>
+    </div>
+  </div>
+</div>

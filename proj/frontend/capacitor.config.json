@@ -1,0 +1,13 @@
+{
+  "appId": "com.monicaricette.app",
+  "appName": "Le mie Ricette",
+  "webDir": "dist/recipe-app/browser",
+  "server": {
+    "androidScheme": "http"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1000
+    }
+  }
+}

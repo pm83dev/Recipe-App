@@ -1,0 +1,22 @@
+# .NET / Visual Studio
+bin/
+obj/
+*.user
+*.suo
+*.useroscs
+*.sln.docstates
+
+# IDEs
+.vscode/
+.idea/
+
+# Node / Frontend
+node_modules/
+dist/
+.angular/
+.npm/
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini

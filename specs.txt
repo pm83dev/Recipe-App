@@ -1,0 +1,8 @@
+Specifiche app
+
+mobile frontend angular/capacitor + backend .net su server web + sqlite db
+
+App per salvare ricette con procedimento, ingredienti, dosaggi, metodi cottura, caricare foto.
+Proporzione automatica per nr persone / dosaggio ingredienti
+
+funzione IA con modello locale (llamacpp) per leggere e salvare campi delle ricette da altri link o da testo incollato 

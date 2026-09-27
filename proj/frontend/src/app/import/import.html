@@ -1,0 +1,58 @@
+<div class="d-flex align-items-center gap-3 mb-4">
+  <a routerLink="/recipes" class="back-link text-decoration-none fw-semibold">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6 6m-6-6 6-6"/></svg>
+    Indietro
+  </a>
+  <h1 class="fs-4 fw-bold mb-0">Importa con IA</h1>
+</div>
+
+<p class="text-muted small mb-3">Incolla il link di una ricetta oppure il testo completo: l'IA locale estrae titolo, ingredienti, dosi e procedimento.</p>
+
+<div class="d-flex gap-2 mb-3">
+  <button class="flex-fill btn" [class.btn-primary]="mode() === 'url'" [class.btn-outline-primary]="mode() !== 'url'" (click)="mode.set('url')">Da link</button>
+  <button class="flex-fill btn" [class.btn-primary]="mode() === 'text'" [class.btn-outline-primary]="mode() !== 'text'" (click)="mode.set('text')">Da testo</button>
+</div>
+
+<div class="alert alert-danger py-2 px-3 small mb-3" *ngIf="error()">{{ error() }}</div>
+
+<div *ngIf="mode() === 'url'">
+  <input class="form-control rounded-3" [ngModel]="url()" (ngModelChange)="url.set($event)"
+         placeholder="https://esempio.it/ricetta" />
+</div>
+<div *ngIf="mode() === 'text'">
+  <textarea class="form-control rounded-3" rows="5" [ngModel]="text()" (ngModelChange)="text.set($event)"
+            placeholder="Pasta al pomodoro. Per 4 persone. 400g spaghetti, 600g pomodori..."></textarea>
+</div>
+
+<button class="btn w-100 py-3 fw-semibold fs-6 mt-3" [disabled]="loading()" (click)="extract()" style="background:#c0562b;">
+  <span class="spinner spinner-sm" *ngIf="loading()"></span>
+  {{ loading() ? 'Estrazione in corso...' : 'Estrai ricetta' }}
+</button>
+
+<div *ngIf="result() as res" class="mt-4" #resultBox>
+  <div class="d-flex align-items-baseline justify-content-between mb-2">
+    <h2 class="fs-6 fw-bold mb-0">Risultato</h2>
+    <span class="text-muted" style="font-size:11px;">motore: {{ res.engine }}</span>
+  </div>
+  <div class="alert alert-danger py-2 px-3 small mb-3" *ngIf="res.error">{{ res.error }}</div>
+  <div class="card p-3">
+    <div class="fw-bold fs-6 mb-1">{{ res.recipe.title }}</div>
+    <div class="d-flex gap-2 small text-muted mb-3">
+      <span>{{ res.recipe.baseServings }} pers.</span>
+      <span *ngIf="res.recipe.prepMinutes">prep {{ res.recipe.prepMinutes }} min</span>
+      <span *ngIf="res.recipe.cookMinutes">cottura {{ res.recipe.cookMinutes }} min</span>
+    </div>
+    <ul class="list-unstyled small mb-0" style="max-height:180px;overflow-y:auto;">
+      <li class="py-1 border-bottom" *ngFor="let i of res.recipe.ingredients">
+        <span style="color:#c0562b;">{{ i.amount ?? '' }}{{ i.unit ? ' ' + i.unit : '' }}</span> {{ i.name }}
+      </li>
+    </ul>
+    <div class="small text-muted mt-2">{{ res.recipe.steps.length }} passi del procedimento</div>
+  </div>
+  <div class="mt-3">
+    <button class="btn w-100 py-2" [disabled]="loading()" (click)="save()" style="background:#c0562b;">
+      <span class="spinner spinner-sm" *ngIf="loading()"></span>
+      {{ loading() ? 'Salvataggio...' : 'Salva in ricette' }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,245 @@
+:root {
+  --accent: #c0562b;
+  --accent-dark: #9c4321;
+  --accent-soft: #f7e8e0;
+  --bg: #faf7f2;
+  --surface: #ffffff;
+  --border: #e8e2d8;
+  --text: #2d2a26;
+  --text-muted: #8a8378;
+  --danger: #b3261e;
+  --success: #1b7a43;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #1c1a17;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:host {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  color: var(--text);
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.app-shell {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: #faf7f2;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+@media (min-width: 520px) {
+  .app-shell {
+    min-height: calc(100dvh - 48px);
+    margin: 24px auto;
+    border-radius: 32px;
+    border: 10px solid #0d0c0b;
+    overflow: hidden;
+  }
+}
+
+.content {
+  flex: 1;
+  padding: 16px 16px 84px;
+}
+
+.bottom-nav {
+  flex-shrink: 0;
+  display: flex;
+  background: #ffffff;
+  border-top: 1px solid var(--border);
+  padding: 6px 12px max(6px, env(safe-area-inset-bottom));
+  gap: 4px;
+}
+
+.bottom-nav a {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 8px 0;
+  border-radius: 12px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.bottom-nav a .icon {
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.bottom-nav a.active {
+  color: var(--accent);
+  font-weight: 600;
+  background: var(--accent-soft);
+}
+
+.bottom-nav a.active .icon {
+  transform: scale(1.12);
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.page-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn:active {
+  background: var(--accent-dark);
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: #c0562b;
+  border: 1px solid #c0562b;
+}
+
+.btn.danger {
+  background: #b3261e;
+}
+
+.btn.small {
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+.input, .textarea, .select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  background: #ffffff;
+  color: var(--text);
+  outline: none;
+}
+
+.input:focus, .textarea:focus, .select:focus {
+  border-color: #c0562b;
+}
+
+.textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.field {
+  margin-bottom: 12px;
+}
+
+.field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8a8378;
+  margin-bottom: 4px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.row > * {
+  flex: 1;
+}
+
+.empty {
+  text-align: center;
+  color: #8a8378;
+  padding: 48px 16px;
+  font-size: 14px;
+}
+
+.error-banner {
+  background: #fdecea;
+  color: #b3261e;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.pb-6 {
+  padding-bottom: 24px !important;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #efe9df 25%, #f7f3ec 50%, #efe9df 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  to { background-position: -200% 0; }
+}

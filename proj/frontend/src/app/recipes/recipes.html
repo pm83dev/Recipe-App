@@ -1,0 +1,60 @@
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h1 class="fs-4 fw-bold mb-0">Ricette</h1>
+  <a class="btn btn-sm" routerLink="/recipes/new">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+    Nuova
+  </a>
+</div>
+
+<div class="search-box mb-3 position-relative">
+  <input class="form-control rounded-3 ps-5" type="search" placeholder="Cerca per nome, ingrediente..."
+         [value]="search()" (input)="onSearchInput($any($event.target).value)" />
+  <span class="search-icon position-absolute top-50 translate-middle-y" style="left:14px;">
+    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+  </span>
+  <button class="search-clear position-absolute top-50 translate-middle-y" style="right:8px;" *ngIf="search()"
+          (click)="clearSearch()" aria-label="Pulisci ricerca">✕</button>
+</div>
+
+<div class="alert alert-danger py-2 px-3 small mb-3" *ngIf="error()">{{ error() }}</div>
+
+<div class="d-flex flex-column gap-2" *ngIf="loading()">
+  <div class="card recipe-card d-flex align-items-center p-2" *ngFor="let s of [1,2,3,4,5]">
+    <div class="skeleton" style="width:64px;height:64px;flex-shrink:0;"></div>
+    <div class="ms-3 d-flex flex-column gap-2" style="min-width:0;">
+      <div class="skeleton" style="height:14px;width:60%;"></div>
+      <div class="skeleton" style="height:11px;width:40%;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="empty-state" *ngIf="!loading() && recipes().length === 0">
+  <div class="empty-icon">
+    <svg viewBox="0 0 24 24" width="52" height="52" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M4 11l1.5 8a2 2 0 0 0 2 1.5h9a2 2 0 0 0 2-1.5L20 11"/></svg>
+  </div>
+  <div class="fw-semibold mb-1" *ngIf="search()">Nessun risultato per "{{ search() }}"</div>
+  <div class="fw-semibold mb-1" *ngIf="!search()">Nessuna ricetta</div>
+  <p class="small text-muted mb-3" *ngIf="search()">Prova con un altro termine di ricerca.</p>
+  <div class="d-flex gap-2 justify-content-center" *ngIf="!search()">
+    <a class="btn btn-sm" routerLink="/import">Importa con IA</a>
+    <a class="btn btn-sm ghost" routerLink="/recipes/new">+ Nuova</a>
+  </div>
+</div>
+
+<div class="d-flex flex-column gap-2 mt-3" *ngIf="!loading() && recipes().length > 0">
+  <a class="card recipe-card d-flex align-items-center text-decoration-none text-dark p-2" *ngFor="let r of recipes()" [routerLink]="['/recipes', r.id]">
+    <img class="rounded-3 flex-shrink-0" [src]="api.imageUrl(r.imageUrl)" alt="" style="width:64px;height:64px;object-fit:cover;" *ngIf="r.imageUrl" />
+    <div class="rounded-3 d-flex align-items-center justify-content-center bg-light text-muted" style="width:64px;height:64px;" *ngIf="!r.imageUrl">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M4 11l1.5 8a2 2 0 0 0 2 1.5h9a2 2 0 0 0 2-1.5L20 11"/></svg>
+    </div>
+    <div class="ms-3 overflow-hidden" style="min-width:0;">
+      <div class="fw-semibold text-truncate" style="font-size:15px;">{{ r.title }}</div>
+      <div class="small text-muted mt-1">
+        <span *ngIf="r.category">{{ r.category }}</span>
+        <span *ngIf="r.category && r.baseServings"> · </span>
+        <span>{{ r.baseServings }} pers.</span>
+        <span *ngIf="r.cookMinutes"> · {{ r.cookMinutes }} min</span>
+      </div>
+    </div>
+  </a>
+</div>

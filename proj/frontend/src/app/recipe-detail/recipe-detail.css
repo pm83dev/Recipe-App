@@ -1,0 +1,48 @@
+/* Stili minimi non coperti da Bootstrap */
+.back-link {
+  color: var(--accent);
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.servings-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.servings-btn:active {
+  background: var(--accent-soft);
+  transform: scale(0.94);
+}
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 26, 23, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 24px;
+}
+
+.confirm-dialog {
+  width: 100%;
+  max-width: 320px;
+  animation: pop-in 0.15s ease;
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
