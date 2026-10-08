@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -15,7 +15,10 @@ import { Recipe } from '../recipe';
 export class Recipes implements OnInit, OnDestroy {
   readonly api = inject(ApiService);
 
-  readonly recipes = this.api.recipes;
+  readonly recipes = computed(() => {
+    const r = this.api.recipes();
+    return [...r].sort((a, b) => (a.title || '').localeCompare(b.title || '', 'it'));
+  });
   readonly loading = this.api.loading;
   readonly error = this.api.error;
   readonly search = this.api.search;

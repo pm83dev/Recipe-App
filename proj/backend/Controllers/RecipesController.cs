@@ -130,6 +130,23 @@ public class RecipesController : ControllerBase
         return Ok(ToDto(r));
     }
 
+    [HttpDelete("recipes/{id:int}/photo")]
+    public async Task<IActionResult> RemovePhoto(int id)
+    {
+        var r = await _db.Recipes.FindAsync(id);
+        if (r == null) return NotFound();
+        if (!string.IsNullOrEmpty(r.ImagePath))
+        {
+            var path = Path.Combine(_uploadsDir, Path.GetFileName(r.ImagePath));
+            if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
+            r.ImagePath = null;
+            r.UpdatedAt = DateTime.UtcNow;
+            await _db.SaveChangesAsync();
+        }
+        string? imageUrl = null;
+        return Ok(new { imageUrl });
+    }
+
     [HttpDelete("recipes/{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {

@@ -61,6 +61,10 @@ export class ApiService {
     return this.http.post<{ imageUrl: string }>(this.api() + '/recipes/' + id + '/photo', form);
   }
 
+  removePhoto(id: number) {
+    return this.http.delete<{ imageUrl: string | null }>(this.api() + '/recipes/' + id + '/photo');
+  }
+
   extract(payload: { url?: string; text?: string }) {
     return this.http.post<ExtractResult>(this.api() + '/extract', payload);
   }
@@ -68,6 +72,8 @@ export class ApiService {
   imageUrl(path: string | null): string {
     if (!path) return '';
     if (path.startsWith('http')) return path;
-    return this.baseUrl.replace('/api', '') + path;
+    const base = this.baseUrl.replace('/api', '').replace(/\/$/, '');
+    const clean = path.startsWith('/') ? path : '/uploads/' + path;
+    return base + clean;
   }
 }

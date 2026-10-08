@@ -41,6 +41,8 @@ export class RecipeForm implements OnInit {
     steps: []
   });
 
+  draggedIndex = -1;
+
   ngOnInit() {
     const idParam = this.route.snapshot.paramMap.get('id');
     if (idParam) {
@@ -85,6 +87,37 @@ export class RecipeForm implements OnInit {
   cancel() {
     this.confirmCancel.set(false);
     this.router.navigate(['/recipes']);
+  }
+
+  removePhoto() {
+    const id = this.editingId();
+    if (!id) return;
+    this.api.removePhoto(id).subscribe({
+      next: () => this.form.update(f => ({ ...f, imageUrl: null })),
+      error: e => this.error.set('Foto: ' + (e?.error?.error ?? e?.message ?? e))
+    });
+  }
+
+  // Step reordering functions
+  moveStepUp(index: number) {
+    if (index > 0) {
+      this.form.update(f => {
+        const steps = [...f.steps];
+        [steps[index - 1], steps[index]] = [steps[index], steps[index - 1]];
+        return { ...f, steps };
+      });
+    }
+  }
+
+  moveStepDown(index: number) {
+    const steps = this.form().steps;
+    if (index < steps.length - 1) {
+      this.form.update(f => {
+        const newSteps = [...f.steps];
+        [newSteps[index], newSteps[index + 1]] = [newSteps[index + 1], newSteps[index]];
+        return { ...f, steps: newSteps };
+      });
+    }
   }
 
   save() {

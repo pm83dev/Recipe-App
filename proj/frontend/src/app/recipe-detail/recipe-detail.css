@@ -1,18 +1,9 @@
-/* Stili minimi non coperti da Bootstrap */
-.back-link {
-  color: var(--accent);
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
 .servings-btn {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   border: 1px solid var(--border);
-  background: #fff;
+  background: var(--surface, #ffffff);
   color: var(--text);
   display: flex;
   align-items: center;
@@ -32,7 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
+  z-index: 1000;
   padding: 24px;
 }
 

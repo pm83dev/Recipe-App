@@ -42,13 +42,13 @@
 </div>
 
 <div class="d-flex flex-column gap-2 mt-3" *ngIf="!loading() && recipes().length > 0">
-  <a class="card recipe-card d-flex align-items-center text-decoration-none text-dark p-2" *ngFor="let r of recipes()" [routerLink]="['/recipes', r.id]">
+  <a class="card recipe-card d-flex align-items-center text-decoration-none p-2" *ngFor="let r of recipes()" [routerLink]="['/recipes', r.id]">
     <img class="rounded-3 flex-shrink-0" [src]="api.imageUrl(r.imageUrl)" alt="" style="width:64px;height:64px;object-fit:cover;" *ngIf="r.imageUrl" />
-    <div class="rounded-3 d-flex align-items-center justify-content-center bg-light text-muted" style="width:64px;height:64px;" *ngIf="!r.imageUrl">
+    <div class="rounded-3 d-flex align-items-center justify-content-center text-muted" style="width:64px;height:64px;background:var(--surface, #ffffff);" *ngIf="!r.imageUrl">
       <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M4 11l1.5 8a2 2 0 0 0 2 1.5h9a2 2 0 0 0 2-1.5L20 11"/></svg>
     </div>
-    <div class="ms-3 overflow-hidden" style="min-width:0;">
-      <div class="fw-semibold text-truncate" style="font-size:15px;">{{ r.title }}</div>
+    <div class="ms-3" style="min-width:0;">
+      <div class="fw-semibold" style="font-size:15px; white-space: normal; word-wrap: break-word;">{{ r.title }}</div>
       <div class="small text-muted mt-1">
         <span *ngIf="r.category">{{ r.category }}</span>
         <span *ngIf="r.category && r.baseServings"> · </span>

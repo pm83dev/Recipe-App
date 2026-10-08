@@ -1,5 +1,5 @@
-<div class="app-shell d-flex flex-column min-vh-100 mx-auto">
-  <main class="flex-grow-1 px-4 pt-4 pb-6">
+<div class="app-shell d-flex flex-column mx-auto">
+  <main class="flex-grow-1 px-4 pt-4 pb-4 overflow-y-auto">
     <router-outlet />
   </main>
   <nav class="bottom-nav d-flex border-top bg-white">
@@ -20,6 +20,12 @@
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
       </span>
       <span>Nuova</span>
+    </a>
+    <a routerLink="/settings" routerLinkActive="active" class="text-center text-decoration-none">
+      <span class="icon d-block lh-1">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1V9a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V15"/></svg>
+      </span>
+      <span>Impostazioni</span>
     </a>
   </nav>
 </div>

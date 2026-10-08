@@ -43,6 +43,8 @@ export class RecipeDetail implements OnInit {
       next: r => {
         this.recipe.set(r);
         this.servings.set(r.baseServings || 4);
+        // Reset savedPhoto when loading a new recipe
+        this.savedPhoto.set(false);
       },
       error: e => this.error.set('Errore: ' + (e?.message ?? e))
     });

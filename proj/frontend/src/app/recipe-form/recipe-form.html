@@ -47,8 +47,19 @@
 </div>
 
 <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+  <h2 class="fs-6 fw-bold mb-0">Foto</h2>
+</div>
+<div *ngIf="form().imageUrl" class="mb-3">
+  <div class="photo-preview-wrap">
+    <img [src]="api.imageUrl(form().imageUrl)" alt="Foto ricetta" class="photo-preview" />
+    <button class="btn btn-sm danger photo-remove" (click)="removePhoto()">Elimina foto</button>
+  </div>
+</div>
+<div *ngIf="!form().imageUrl" class="empty-hint mb-3">Nessuna foto.</div>
+
+<div class="d-flex align-items-center justify-content-between mt-4 mb-2">
   <h2 class="fs-6 fw-bold mb-0">Ingredienti</h2>
-  <button class="btn btn-sm btn-outline-secondary" (click)="addIngredient()">+ Aggiungi</button>
+  <button class="btn btn-sm" (click)="addIngredient()">+ Aggiungi</button>
 </div>
 
 <div *ngIf="form().ingredients.length === 0" class="empty-hint">Nessun ingrediente: tocca "+ Aggiungi" per iniziare.</div>
@@ -57,22 +68,29 @@
          [ngModel]="ing.amount ?? 0" (ngModelChange)="ing.amount = $event" />
   <input class="form-control form-control-sm rounded-3" style="max-width:100px;flex:0 0 100px;" placeholder="Unità" [ngModel]="ing.unit ?? ''" (ngModelChange)="ing.unit = $event" />
   <input class="form-control form-control-sm rounded-3 flex-grow-1" placeholder="Ingrediente" [ngModel]="ing.name" (ngModelChange)="ing.name = $event" />
-  <button class="btn btn-sm btn-outline-danger" (click)="removeIngredient(i)" aria-label="Rimuovi ingrediente">x</button>
+  <button class="btn btn-sm danger" (click)="removeIngredient(i)" aria-label="Rimuovi ingrediente">x</button>
 </div>
 
 <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
   <h2 class="fs-6 fw-bold mb-0">Procedimento</h2>
-  <button class="btn btn-sm btn-outline-secondary" (click)="addStep()">+ Aggiungi</button>
+  <button class="btn btn-sm" (click)="addStep()">+ Aggiungi</button>
 </div>
 
 <div *ngIf="form().steps.length === 0" class="empty-hint">Nessun passo: tocca "+ Aggiungi" per iniziare.</div>
-<div *ngFor="let s of form().steps; let i = index; let idx = index" class="d-flex gap-2 mb-2 align-items-start">
-  <span class="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center text-white fw-bold small" style="width:26px;height:26px;background:#c0562b;">{{ idx + 1 }}</span>
-  <textarea class="form-control form-control-sm flex-grow-1" rows="2" [ngModel]="s.text" (ngModelChange)="s.text = $event" placeholder="Passo {{ idx + 1 }}"></textarea>
-  <button class="btn btn-sm btn-outline-danger flex-shrink-0" (click)="removeStep(i)">x</button>
-</div>
+  <div 
+    *ngFor="let s of form().steps; let i = index; let idx = index" 
+    class="step-container d-flex gap-2 mb-2 align-items-start"
+    [attr.data-index]="i"
+  >
+    <div class="step-controls">
+      <button class="step-move-btn" (click)="moveStepUp(i)" [disabled]="i === 0" title="Sposta su">↑</button>
+      <button class="step-move-btn" (click)="moveStepDown(i)" [disabled]="i === form().steps.length - 1" title="Sposta giù">↓</button>
+    </div>
+    <textarea class="form-control form-control-sm flex-grow-1" rows="2" [ngModel]="s.text" (ngModelChange)="s.text = $event" placeholder="Passo {{ idx + 1 }}"></textarea>
+    <button class="btn btn-sm danger flex-shrink-0" (click)="removeStep(i)">x</button>
+    </div>
 
-<button class="btn w-100 py-3 fw-semibold fs-6 mt-4" [disabled]="saving()" (click)="save()" style="background:#c0562b;">
+<button class="btn w-100 py-3 fw-semibold fs-6 mt-4" [disabled]="saving()" (click)="save()">
   <span class="spinner spinner-sm" *ngIf="saving()"></span>
   {{ saving() ? 'Salvataggio...' : 'Salva ricetta' }}
 </button>

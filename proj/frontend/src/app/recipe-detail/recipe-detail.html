@@ -7,14 +7,14 @@
       Indietro
     </a>
     <div class="d-flex gap-2">
-      <a class="btn btn-sm btn-outline-secondary" [routerLink]="['/recipes', r.id, 'edit']">Modifica</a>
-      <button class="btn btn-sm btn-outline-danger" (click)="confirmDelete.set(true)">Elimina</button>
+      <a class="btn btn-sm" [routerLink]="['/recipes', r.id, 'edit']">Modifica</a>
+      <button class="btn btn-sm danger" (click)="confirmDelete.set(true)">Elimina</button>
     </div>
   </div>
 
-  <div class="position-relative rounded-4 overflow-hidden mb-3" style="border:1px solid #e8e2d8;">
+  <div class="position-relative rounded-4 overflow-hidden mb-3" style="border:1px solid var(--border);">
     <img *ngIf="r.imageUrl" [src]="api.imageUrl(r.imageUrl)" alt="{{ r.title }}" class="w-100" style="height:220px;object-fit:cover;" />
-    <div class="d-flex align-items-center justify-content-center bg-light text-muted" style="height:120px;" *ngIf="!r.imageUrl">
+    <div class="d-flex align-items-center justify-content-center text-muted" style="height:120px;background:var(--surface, #ffffff);" *ngIf="!r.imageUrl">
       <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M4 11l1.5 8a2 2 0 0 0 2 1.5h9a2 2 0 0 0 2-1.5L20 11"/></svg>
     </div>
     <label class="position-absolute bottom-0 end-0 m-2 text-white fw-semibold small px-3 py-2 rounded-3 d-inline-flex align-items-center gap-1" style="background:rgba(0,0,0,0.65);cursor:pointer;">
@@ -22,7 +22,7 @@
       Foto
       <input type="file" accept="image/*" (change)="onPhotoChange($event)" class="d-none" />
     </label>
-    <span class="position-absolute bottom-0 start-0 m-2 text-white small px-3 py-2 rounded-3" style="background:#1b7a43;" *ngIf="savedPhoto()">Foto salvata</span>
+    <span class="position-absolute bottom-0 start-0 m-2 text-white small px-3 py-2 rounded-3" style="background:var(--success);" *ngIf="savedPhoto()">Foto salvata</span>
   </div>
 
   <h1 class="fs-3 fw-bold mb-1">{{ r.title }}</h1>
@@ -53,7 +53,7 @@
   <h2 class="fs-6 fw-bold border-bottom border-2 pb-2 mt-4 mb-3">Ingredienti</h2>
   <ul class="list-unstyled mb-0">
     <li class="d-flex gap-2 py-2 border-bottom small" *ngFor="let i of r.ingredients">
-      <span class="fw-bold text-dark" style="min-width:80px;color:#c0562b;">{{ amountText(r, i) }}</span>
+      <span class="fw-bold text-dark" style="min-width:80px;color:var(--accent);">{{ amountText(r, i) }}</span>
       <span>{{ i.name }}</span>
     </li>
   </ul>
@@ -61,7 +61,7 @@
   <h2 class="fs-6 fw-bold border-bottom border-2 pb-2 mt-4 mb-3">Procedimento</h2>
   <ol class="list-unstyled mb-0">
     <li class="d-flex gap-3 py-2 border-bottom small lh-lg" *ngFor="let s of r.steps; let idx = index">
-      <span class="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center text-white fw-bold small" style="width:26px;height:26px;background:#c0562b;">{{ idx + 1 }}</span>
+      <span class="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center text-white fw-bold small" style="width:26px;height:26px;background:var(--accent);">{{ idx + 1 }}</span>
       <span>{{ s.text }}</span>
     </li>
   </ol>
